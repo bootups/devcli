@@ -2,6 +2,13 @@
 # Use with caution
 #
 
+function fd() {
+    find . -type d -iname $1
+}
+function ff() {
+    find -E . -iregex $1 -exec ls -lFh {} \;
+}
+
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias lz='ls -lFh'     #size,show type,human readable
 alias l='ls -lAFh'   #long list,show almost all,show type,human readable
@@ -34,13 +41,6 @@ alias -g P="2>&1| pygmentize -l pytb"
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-function fd() {
-    find . -type d -iname \*$1\*
-}
-function ff() {
-    find -E . -iregex $1 -exec ls -lFh {} \;
-}
-
 alias h='history'
 alias hgrep="fc -El 0 | grep"
 alias help='man'

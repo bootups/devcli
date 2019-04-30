@@ -8,4 +8,4 @@ docker build \
     --build-arg aws_config="$(cat ~/.aws/config)" \
     --build-arg aws_credentials="$(cat ~/.aws/credentials)" \
     -f "Dockerfile" \
-    -t cli:latest .
+    -t devcli:latest .
