@@ -3,7 +3,7 @@ ZSH_THEME="agnoster"
 export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
 export P="/Users/adrian/Projects/"
-export HISTFILE=/devcli/store/.zsh_history
+export HISTFILE=/devcli/cache/.zsh_history
 
 plugins=(git aws sudo docker colored-man-pages colorize vi-mode)
 source $ZSH/oh-my-zsh.sh

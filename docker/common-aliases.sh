@@ -24,6 +24,8 @@ alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+alias rgrep='grep --color -RIEn -C 5  --exclude-dir={.git,.svn,CVS} '
+alias agrep='grep --color -IEn -C 5  --exclude-dir={.git,.svn,CVS} '
 
 alias t='tail -f'
 

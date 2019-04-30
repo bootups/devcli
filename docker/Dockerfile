@@ -53,6 +53,10 @@ ENV TERM=screen-256color
 RUN curl -fsSL https://get.docker.com -o get-docker.sh
 RUN sudo sh get-docker.sh
 
+# Gives good examples of linux commands
+RUN ln -s /devcli/cache/.tldr /root/.tldr
+RUN npm install -g tldr
+
 # Install oh-my-zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 COPY .zshrc /root/
