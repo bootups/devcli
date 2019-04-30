@@ -44,19 +44,6 @@ RUN rm awscli-bundle.zip
 
 RUN locale-gen en_US.UTF-8
 
-## Setup github access
-ARG ssh_prv_key
-ARG ssh_pub_key
-# Authorize SSH Host
-RUN mkdir -p /root/.ssh && \
-    chmod 0700 /root/.ssh
-# Add the keys and set permissions
-RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
-    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
-    chmod 600 /root/.ssh/id_rsa && \
-    chmod 600 /root/.ssh/id_rsa.pub
-COPY config /root/.ssh/
-
 # terminal colors with xterm
 # set the zsh theme
 ENV ZSH_THEME agnoster
@@ -71,5 +58,28 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 COPY .zshrc /root/
 COPY common-aliases.sh /root/
 COPY .gitconfig /root/
+
+# Setup github access
+ARG ssh_prv_key
+ARG ssh_pub_key
+ARG ssh_known_hosts
+RUN mkdir -p /root/.ssh && \
+    chmod 0700 /root/.ssh
+RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
+    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
+    echo "$ssh_known_hosts" > /root/.ssh/known_hosts && \
+    chmod 600 /root/.ssh/id_rsa && \
+    chmod 600 /root/.ssh/id_rsa.pub
+COPY config /root/.ssh/
+
+# Setup aws credentials
+ARG aws_config
+ARG aws_credentials
+RUN mkdir -p /root/.aws && \
+    chmod 0700 /root/.aws
+RUN echo "$aws_config" > /root/.aws/config && \
+    echo "$aws_credentials" > /root/.aws/credentials && \
+    chmod 600 /root/.aws/config && \
+    chmod 600 /root/.aws/credentials
 
 ENTRYPOINT [ "/bin/zsh" ]
