@@ -55,6 +55,7 @@ RUN sudo sh get-docker.sh
 
 # Gives good examples of linux commands
 RUN ln -s /devcli/cache/.tldr /root/.tldr
+RUN ln -s /devcli/cache/.z /root/.z
 RUN npm install -g tldr
 
 # Install oh-my-zsh
@@ -62,6 +63,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 COPY .zshrc /root/
 COPY common-aliases.sh /root/
 COPY .gitconfig /root/
+COPY plugins /root/.oh-my-zsh/custom/plugins/
 
 # Setup github access
 ARG ssh_prv_key

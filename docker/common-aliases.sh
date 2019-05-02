@@ -43,6 +43,9 @@ alias -g P="2>&1| pygmentize -l pytb"
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
+# Use the --excludes
+# alias duh='du -h --exclude=".git" . | sort -h'
+alias duh='du -h . | sort -h'
 alias h='history'
 alias hgrep="fc -El 0 | grep"
 alias help='man'
@@ -53,6 +56,7 @@ alias unexport='unset'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
 
 # zsh is able to auto-do some kungfoo
 # depends on the SUFFIX :)
