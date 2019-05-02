@@ -88,4 +88,7 @@ RUN echo "$aws_config" > /root/.aws/config && \
     chmod 600 /root/.aws/config && \
     chmod 600 /root/.aws/credentials
 
+ARG home
+ENV HOST_HOME="$home"
+
 ENTRYPOINT [ "/bin/zsh" ]

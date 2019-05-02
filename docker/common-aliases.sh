@@ -9,6 +9,8 @@ function ff() {
     find -E . -iregex $1 -exec ls -lFh {} \;
 }
 
+alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'
+
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias lz='ls -lFh'     #size,show type,human readable
 alias l='ls -lAFh'   #long list,show almost all,show type,human readable

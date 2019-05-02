@@ -14,6 +14,10 @@ alias k="k -h -a"
 alias vi='nvim'
 alias vim='nvim'
 
+# Set the home to the host home
+export HOME=$HOST_HOME
+cd ~
+
 # TODO: put the following into confluence
 # https httpserver
 # cd /Users/adrian/Projects/customisations/drawio
