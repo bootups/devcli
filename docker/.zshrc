@@ -10,10 +10,6 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/common-aliases.sh
 . $ZSH/plugins/z/z.sh
 
-alias k="k -h -a"
-alias vi='nvim'
-alias vim='nvim'
-
 # Set the home to the host home
 export HOME=$HOST_HOME
 cd ~

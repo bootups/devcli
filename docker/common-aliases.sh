@@ -8,8 +8,11 @@ function fd() {
 function ff() {
     find -E . -iregex $1 -exec ls -lFh {} \;
 }
-
+alias fr1="find . -maxdepth 1 -type d -printf '\n%p: ' -exec ls -lAFh "{}" \;"
 alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'
+alias kn="k -h -a"
+alias vi='nvim'
+alias vim='nvim'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias lz='ls -lFh'     #size,show type,human readable
@@ -91,7 +94,6 @@ if is-at-least 4.2.0; then
   alias -s zip="unzip -l"
   alias -s rar="unrar l"
   alias -s tar="tar tf"
-  alias -s tar.gz="echo "
   alias -s ace="unace l"
 fi
 
