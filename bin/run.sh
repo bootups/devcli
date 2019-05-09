@@ -2,7 +2,4 @@
 
 cd ../docker
 
-# pwd example
-#docker run --init -it --rm -v $PWD:/Users:cached -v /var/run/docker.sock:/var/run/docker.sock cli
-
-docker run --init -it --rm -v /Users:/Users:cached -v /var/run/docker.sock:/var/run/docker.sock cli
+docker run --init -it --rm -v $(realpath ../root):/root:cached -v $(realpath ../../../codelytics-design):/project:cached -v /var/run/docker.sock:/var/run/docker.sock -p 9999:80 devcli

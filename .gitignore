@@ -1,1 +1,6 @@
-cache
+.DS_Store
+.zcompdump*
+root/.local/**
+root/.tldr/**
+root/.z
+root/zsh_history

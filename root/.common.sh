@@ -2,24 +2,44 @@
 # Use with caution
 #
 
+# Find directores matching the pattern
 function fd() {
-    find . -type d -iname $1
+  find . -type d -iname $1
 }
+
+# Find files matching the whole path using case insensitive extended regular expressions.
 function ff() {
-    find -E . -iregex $1 -exec ls -lFh {} \;
+  find -E . -iregex $1 -exec ls -lFh {} \;
 }
+
+# Cats the files matching file pattern with neovim pretty print
+# $ catfiles *.sh 
+function catfiles() {
+  tail -n +1 $1 | less.sh
+}
+
+# Prints the contents of the directories immediately below the current directory
 alias fr1="find . -maxdepth 1 -type d -printf '\n%p: ' -exec ls -lAFh "{}" \;"
+
+# login to aws ecr
 alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'
+# pretty directory listing
 alias kn="k -h -a"
+
+# neovim aliases
 alias vi='nvim'
 alias vim='nvim'
 
+# Perform regular expressions search on stdin, or directory recursively if -R used.
+# agrep -R (HIST_|MASS_) .oh-my-zsh
+alias agrep='grep --color -IEn --exclude-dir={.git} '
+
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias lz='ls -lFh'     #size,show type,human readable
-alias l='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
+alias lz='ls -lFh'  #size,show type,human readable
+alias l='ls -lAFh'  #long list,show almost all,show type,human readable
+alias lr='ls -tRFh' #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh' #long list,sorted by date,show type,human readable
+alias ll='ls -l'    #long list
 alias ldot='ls -ld .*'
 alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
@@ -29,8 +49,6 @@ alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
-alias rgrep='grep --color -RIEn -C 5  --exclude-dir={.git,.svn,CVS} '
-alias agrep='grep --color -IEn -C 5  --exclude-dir={.git,.svn,CVS} '
 
 alias t='tail -f'
 
@@ -61,7 +79,6 @@ alias unexport='unset'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
 
 # zsh is able to auto-do some kungfoo
 # depends on the SUFFIX :)

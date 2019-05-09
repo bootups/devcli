@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y sudo \
 # Web
 RUN apt-get update && apt-get install -y sudo \
   grunt
+RUN npm install http-server -g
 
 # AWS
 RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -54,16 +55,7 @@ RUN curl -fsSL https://get.docker.com -o get-docker.sh
 RUN sudo sh get-docker.sh
 
 # Gives good examples of linux commands
-RUN ln -s /devcli/cache/.tldr /root/.tldr
-RUN ln -s /devcli/cache/.z /root/.z
 RUN npm install -g tldr
-
-# Install oh-my-zsh
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-COPY .zshrc /root/
-COPY common-aliases.sh /root/
-COPY .gitconfig /root/
-COPY plugins /root/.oh-my-zsh/custom/plugins/
 
 # Setup github access
 ARG ssh_prv_key
@@ -76,7 +68,6 @@ RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
     echo "$ssh_known_hosts" > /root/.ssh/known_hosts && \
     chmod 600 /root/.ssh/id_rsa && \
     chmod 600 /root/.ssh/id_rsa.pub
-COPY config /root/.ssh/
 
 # Setup aws credentials
 ARG aws_config
@@ -88,7 +79,7 @@ RUN echo "$aws_config" > /root/.aws/config && \
     chmod 600 /root/.aws/config && \
     chmod 600 /root/.aws/credentials
 
-ARG home
-ENV HOST_HOME="$home"
+# Install oh-my-zsh
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 ENTRYPOINT [ "/bin/zsh" ]

@@ -2,17 +2,16 @@
 ZSH_THEME="agnoster"
 export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
-export P="/Users/adrian/Projects/"
-export HISTFILE=/devcli/cache/.zsh_history
 
 plugins=(git aws sudo docker colored-man-pages colorize vi-mode zsh-syntax-highlighting zsh-completions zsh-autosuggestions k)
 source $ZSH/oh-my-zsh.sh
-source $HOME/common-aliases.sh
+source $HOME/common.sh
 . $ZSH/plugins/z/z.sh
 
 # Set the home to the host home
-export HOME=$HOST_HOME
-cd ~
+cd /project
+
+export PATH=$PATH:/usr/share/nvim/runtime/macros
 
 # TODO: put the following into confluence
 # https httpserver
