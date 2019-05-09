@@ -3,4 +3,7 @@
 root/.local/**
 root/.tldr/**
 root/.z
-root/zsh_history
+root/.zsh_history
+root/.ssh
+root/.aws
+root/.oh-my-zsh

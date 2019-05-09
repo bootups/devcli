@@ -1,11 +1,16 @@
 #!/bin/zsh
 
 cd ../docker
-docker build \
-    --build-arg ssh_prv_key="$(cat ~/.ssh/id_rsa)" \
-    --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" \
-    --build-arg ssh_known_hosts="$(cat ~/.ssh/known_hosts)" \
-    --build-arg aws_config="$(cat ~/.aws/config)" \
-    --build-arg aws_credentials="$(cat ~/.aws/credentials)" \
-    -f "Dockerfile" \
-    -t devcli:latest .
+docker build -f "Dockerfile" -t devcli:latest .
+
+cd ../root
+if [[ ! -a .oh-my-zsh ]]; then
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
+    cp -r ../docker/plugins/* .oh-my-zsh/custom/plugins/
+fi
+if [[ ! -a .ssh ]]; then
+    cp -r ~/.ssh .
+fi
+if [[ ! -a .aws ]]; then
+    cp -r ~/.aws .
+fi

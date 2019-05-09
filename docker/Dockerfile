@@ -79,7 +79,4 @@ RUN echo "$aws_config" > /root/.aws/config && \
     chmod 600 /root/.aws/config && \
     chmod 600 /root/.aws/credentials
 
-# Install oh-my-zsh
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-
 ENTRYPOINT [ "/bin/zsh" ]
