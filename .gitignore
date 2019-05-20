@@ -7,3 +7,7 @@ root/.zsh_history
 root/.ssh
 root/.aws
 root/.oh-my-zsh
+root/.lesshst
+root/.node_repl_history
+root/.sudo_as_admin_successful
+bin/run2.sh

@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# TODO: Use Quick installation instructions instead: https://github.com/powerline/fonts
+sudo apt-get install fonts-powerline
+
 cd ../docker
 docker build -f "Dockerfile" -t devcli:latest .
 

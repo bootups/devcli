@@ -18,6 +18,8 @@ function catfiles() {
   tail -n +1 $1 | less.sh
 }
 
+alias un='for i in *.zip; do unzip "$i" -d "${i%%.zip}"; done'
+
 # Prints the contents of the directories immediately below the current directory
 alias fr1="find . -maxdepth 1 -type d -printf '\n%p: ' -exec ls -lAFh "{}" \;"
 

@@ -57,26 +57,32 @@ RUN sudo sh get-docker.sh
 # Gives good examples of linux commands
 RUN npm install -g tldr
 
+RUN addgroup --gid 1003 adrianb
+RUN adduser --uid 1002 --gid 1003 --disabled-password  --gecos "" adrianb
+RUN echo "adrianb:password"|sudo chpasswd
+RUN usermod -aG sudo adrianb
+USER adrianb
+
 # Setup github access
 ARG ssh_prv_key
 ARG ssh_pub_key
 ARG ssh_known_hosts
-RUN mkdir -p /root/.ssh && \
-    chmod 0700 /root/.ssh
-RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
-    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
-    echo "$ssh_known_hosts" > /root/.ssh/known_hosts && \
-    chmod 600 /root/.ssh/id_rsa && \
-    chmod 600 /root/.ssh/id_rsa.pub
+RUN mkdir -p ~/.ssh && \
+    chmod 0700 ~/.ssh
+RUN echo "$ssh_prv_key" > ~/.ssh/id_rsa && \
+    echo "$ssh_pub_key" > ~/.ssh/id_rsa.pub && \
+    echo "$ssh_known_hosts" > ~/.ssh/known_hosts && \
+    chmod 600 ~/.ssh/id_rsa && \
+    chmod 600 ~/.ssh/id_rsa.pub
 
 # Setup aws credentials
 ARG aws_config
 ARG aws_credentials
-RUN mkdir -p /root/.aws && \
-    chmod 0700 /root/.aws
-RUN echo "$aws_config" > /root/.aws/config && \
-    echo "$aws_credentials" > /root/.aws/credentials && \
-    chmod 600 /root/.aws/config && \
-    chmod 600 /root/.aws/credentials
+RUN mkdir -p ~/.aws && \
+    chmod 0700 ~/.aws
+RUN echo "$aws_config" > ~/.aws/config && \
+    echo "$aws_credentials" > ~/.aws/credentials && \
+    chmod 600 ~/.aws/config && \
+    chmod 600 ~/.aws/credentials
 
 ENTRYPOINT [ "/bin/zsh" ]
