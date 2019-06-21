@@ -11,8 +11,5 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.common.sh
 . $ZSH/plugins/z/z.sh
 
-# Changes to the standard project path (for devcli)
-cd /project
-
 # Access to neovim macros
 export PATH=$PATH:/usr/share/nvim/runtime/macros

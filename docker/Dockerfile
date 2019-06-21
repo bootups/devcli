@@ -23,9 +23,10 @@ RUN apt-get update && apt-get install -y sudo \
   git-core
 
 # Node
+RUN apt-get update && apt-get install -y curl software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN apt-get update && apt-get install -y sudo \
-  nodejs \
-  npm
+  nodejs
 
 # Java packages
 RUN apt-get update && apt-get install -y sudo \
@@ -61,6 +62,12 @@ RUN addgroup --gid 1003 adrianb
 RUN adduser --uid 1002 --gid 1003 --disabled-password  --gecos "" adrianb
 RUN echo "adrianb:password"|sudo chpasswd
 RUN usermod -aG sudo adrianb
+# Change default user location, so that the user can access their home folder
+# with the same path as the host
+RUN usermod -d /home/adrianb-env1 adrianb
+RUN sudo rm -rf /home/adrianb
+RUN sudo mkdir /home/adrianb-env1
+RUN sudo chown adrianb /home/adrianb-env1
 USER adrianb
 
 # Setup github access

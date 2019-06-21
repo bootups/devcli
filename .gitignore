@@ -11,3 +11,8 @@ root/.lesshst
 root/.node_repl_history
 root/.sudo_as_admin_successful
 bin/run2.sh
+root/.npm
+root/.config/configstore/update-notifier-npm.json
+docker/.aws
+docker/.ssh
+root/.docker
