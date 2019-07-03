@@ -16,3 +16,4 @@ root/.config/configstore/update-notifier-npm.json
 docker/.aws
 docker/.ssh
 root/.docker
+root/.config

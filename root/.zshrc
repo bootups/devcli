@@ -1,4 +1,3 @@
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
@@ -13,3 +12,4 @@ source $HOME/.common.sh
 
 # Access to neovim macros
 export PATH=$PATH:/usr/share/nvim/runtime/macros
+cd /home/$(whoami)

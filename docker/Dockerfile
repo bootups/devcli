@@ -52,23 +52,28 @@ ENV ZSH_THEME agnoster
 ENV TERM=screen-256color
 
 # Install docker
+ARG dockerGid
+RUN addgroup --gid "$dockerGid" docker
 RUN curl -fsSL https://get.docker.com -o get-docker.sh
 RUN sudo sh get-docker.sh
 
 # Gives good examples of linux commands
 RUN npm install -g tldr
 
-RUN addgroup --gid 1003 adrianb
-RUN adduser --uid 1002 --gid 1003 --disabled-password  --gecos "" adrianb
-RUN echo "adrianb:password"|sudo chpasswd
-RUN usermod -aG sudo adrianb
+ARG whoami
+ARG currentUid
+ARG currentGid
+RUN addgroup --gid "$currentGid" "$whoami"
+RUN adduser --uid "$currentUid" --gid "$currentGid" --gid "$dockerGid" --disabled-password  --gecos "" "$whoami"
+RUN echo ""$whoami":password"|sudo chpasswd
+RUN usermod -aG sudo "$whoami"
 # Change default user location, so that the user can access their home folder
 # with the same path as the host
-RUN usermod -d /home/adrianb-env1 adrianb
-RUN sudo rm -rf /home/adrianb
-RUN sudo mkdir /home/adrianb-env1
-RUN sudo chown adrianb /home/adrianb-env1
-USER adrianb
+RUN usermod -d /home/"$whoami"-env1 "$whoami"
+RUN sudo rm -rf /home/"$whoami"
+RUN sudo mkdir /home/"$whoami"-env1
+RUN sudo chown "$whoami" /home/"$whoami"-env1
+USER "$whoami"
 
 # Setup github access
 ARG ssh_prv_key
@@ -91,5 +96,7 @@ RUN echo "$aws_config" > ~/.aws/config && \
     echo "$aws_credentials" > ~/.aws/credentials && \
     chmod 600 ~/.aws/config && \
     chmod 600 ~/.aws/credentials
+
+EXPOSE 8080 
 
 ENTRYPOINT [ "/bin/zsh" ]

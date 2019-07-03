@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-# TODO: Use Quick installation instructions instead: https://github.com/powerline/fonts
-sudo apt-get install fonts-powerline
-
 cd ../docker
-docker build -f "Dockerfile" -t devcli:latest .
+dockerGid=$(getent group docker | cut -d':' -f3)
+currentUid=$(id -u $(whoami))
+currentGid=$(id -g $(whoami))
+docker build --no-cache -f "Dockerfile" --build-arg whoami=$(whoami) --build-arg dockerGid=$dockerGid --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
 
 cd ../root
 if [[ ! -a .oh-my-zsh ]]; then
