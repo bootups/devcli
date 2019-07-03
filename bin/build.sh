@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 cd ../docker
-dockerGid=$(getent group docker | cut -d':' -f3)
+dockerGid=$(python -c 'import grp; print grp.getgrnam("docker").gr_gid')
 currentUid=$(id -u $(whoami))
 currentGid=$(id -g $(whoami))
-docker build --no-cache -f "Dockerfile" --build-arg whoami=$(whoami) --build-arg dockerGid=$dockerGid --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
+docker build -f "Dockerfile" --build-arg whoami=$(whoami) --build-arg dockerGid=$dockerGid --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
 
 cd ../root
 if [[ ! -a .oh-my-zsh ]]; then

@@ -1,6 +1,7 @@
 ZSH_THEME="agnoster"
 export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
+#chroot --userspec=adrianb:adrianb /host
 
 # to stop problems working with non root files from host
 export ZSH_DISABLE_COMPFIX=true
