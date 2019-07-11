@@ -14,12 +14,15 @@ Install [Powerline](https://github.com/powerline/fonts) fonts
 
 ### MacOS
 ```
-brew install coreutils
+brew install neovim
 ```
 
 # Uses
 | Library                                 | Description | Screen Shots | Dependencies |
 | --------------------------------------- | ----------- | ------------ | ------------ |
-| [k](https://github.com/supercrabtree/k) | Like `ls`   |              |              |
+| [k](https://github.com/supercrabtree/k) | Like `ls`   |              | brew install coreutils             |
 | col 2 is                                | centered    | $12          |              |
 | zebra stripes                           | are neat    | $1           |              |
+
+# TODO
+* root/

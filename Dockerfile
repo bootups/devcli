@@ -52,8 +52,6 @@ ENV ZSH_THEME agnoster
 ENV TERM=screen-256color
 
 # Install docker
-ARG dockerGid
-RUN addgroup --gid "$dockerGid" docker
 RUN curl -fsSL https://get.docker.com -o get-docker.sh
 RUN sudo sh get-docker.sh
 
@@ -63,16 +61,20 @@ RUN npm install -g tldr
 ARG whoami
 ARG currentUid
 ARG currentGid
+RUN groupdel dialout
 RUN addgroup --gid "$currentGid" "$whoami"
-RUN adduser --uid "$currentUid" --gid "$currentGid" --gid "$dockerGid" --disabled-password  --gecos "" "$whoami"
+RUN addgroup --gid 80 admin
+# todo: get rid of unnecessary gids
+RUN adduser --uid "$currentUid" --gid 0 --gid 1 --gid 80 --gid "$currentGid" --disabled-password  --gecos "" "$whoami"
 RUN echo ""$whoami":password"|sudo chpasswd
 RUN usermod -aG sudo "$whoami"
-# Change default user location, so that the user can access their home folder
+# Change default user location, so that the user can access their Users folder
 # with the same path as the host
 RUN usermod -d /home/"$whoami"-env1 "$whoami"
-RUN sudo rm -rf /home/"$whoami"
+RUN sudo rm -rf /home/"$whoami"/
 RUN sudo mkdir /home/"$whoami"-env1
 RUN sudo chown "$whoami" /home/"$whoami"-env1
+
 USER "$whoami"
 
 # Setup github access
