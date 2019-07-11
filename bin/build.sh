@@ -12,13 +12,13 @@ fi
 if [[ ! -a .oh-my-zsh/custom/plugins/k ]]; then
     git clone --depth=1 git@github.com:supercrabtree/k.git .oh-my-zsh/custom/plugins/k
 fi
-if [[ ! -a .oh-my-zsh/custom/plugins/zsh-autosuggestions.git ]]; then
+if [[ ! -a .oh-my-zsh/custom/plugins/zsh-autosuggestions ]]; then
     git clone --depth=1 git@github.com:zsh-users/zsh-autosuggestions.git .oh-my-zsh/custom/plugins/zsh-autosuggestions
 fi
-if [[ ! -a .oh-my-zsh/custom/plugins/zsh-completions.git ]]; then
+if [[ ! -a .oh-my-zsh/custom/plugins/zsh-completions ]]; then
     git clone --depth=1 git@github.com:zsh-users/zsh-completions.git .oh-my-zsh/custom/plugins/zsh-completions
 fi
-if [[ ! -a .oh-my-zsh/custom/plugins/zsh-syntax-highlighting.git ]]; then
+if [[ ! -a .oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]]; then
     git clone --depth=1 git@github.com:zsh-users/zsh-syntax-highlighting.git .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 if [[ ! -a .ssh ]]; then

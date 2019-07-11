@@ -77,28 +77,6 @@ RUN sudo chown "$whoami" /home/"$whoami"-env1
 
 USER "$whoami"
 
-# Setup github access
-ARG ssh_prv_key
-ARG ssh_pub_key
-ARG ssh_known_hosts
-RUN mkdir -p ~/.ssh && \
-    chmod 0700 ~/.ssh
-RUN echo "$ssh_prv_key" > ~/.ssh/id_rsa && \
-    echo "$ssh_pub_key" > ~/.ssh/id_rsa.pub && \
-    echo "$ssh_known_hosts" > ~/.ssh/known_hosts && \
-    chmod 600 ~/.ssh/id_rsa && \
-    chmod 600 ~/.ssh/id_rsa.pub
-
-# Setup aws credentials
-ARG aws_config
-ARG aws_credentials
-RUN mkdir -p ~/.aws && \
-    chmod 0700 ~/.aws
-RUN echo "$aws_config" > ~/.aws/config && \
-    echo "$aws_credentials" > ~/.aws/credentials && \
-    chmod 600 ~/.aws/config && \
-    chmod 600 ~/.aws/credentials
-
 EXPOSE 8080 
 
 ENTRYPOINT [ "/bin/zsh" ]
