@@ -1,6 +1,7 @@
 # Advanced Aliases.
 # Use with caution
 #
+alias pr='cd /home/adrian/Projects'
 
 # Find directores matching the pattern
 function fd() {
@@ -19,11 +20,10 @@ function catfiles() {
 }
 
 # Finds files across the file system >= 100M
-alias largefiles="sudo find / -xdev -type f -size +100M"
+alias lf="sudo find . -xdev -type f -size +100M"
 
 # Start up different Chrome instances
-alias chrome1='/opt/google/chrome/chrome --user-data-dir=~/projects/product/codelytics/assets/data/chrome/core'
-alias chrome2='/opt/google/chrome/chrome --user-data-dir=~/projects/product/codelytics/assets/data/chrome/dog'
+alias vdc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/Users/adrian/Projects/doco/visual-doco/config/chrome'
 
 alias un='for i in *.zip; do unzip "$i" -d "${i%%.zip}"; done'
 

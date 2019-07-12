@@ -77,6 +77,4 @@ RUN sudo chown "$whoami" /home/"$whoami"-env1
 
 USER "$whoami"
 
-EXPOSE 8080 
-
 ENTRYPOINT [ "/bin/zsh" ]

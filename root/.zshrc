@@ -3,6 +3,8 @@ export ZSH=$HOME/.oh-my-zsh
 export TERM="xterm-256color"
 #chroot --userspec=adrianb:adrianb /host
 
+# Run docker terminal
+export PATH=$PATH:/Users/adrian/Projects/devcli/bin
 # MacOSX: access to some brew utilities
 export PATH=$PATH:/usr/local/bin
 # Access to neovim macros
@@ -14,3 +16,6 @@ plugins=(git aws sudo docker colored-man-pages colorize vi-mode zsh-syntax-highl
 source $ZSH/oh-my-zsh.sh
 source $HOME/.common.sh
 . $ZSH/plugins/z/z.sh
+
+# zcomp files collect, the following clears them out
+rm ~/.zcompdump*
