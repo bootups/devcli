@@ -12,3 +12,17 @@ docker run --init -it -P --rm \
     -v /Users/$(whoami):/home/$(whoami):cached \
     -v /var/run/docker.sock:/var/run/docker.sock \
     devcli
+
+criptdir=$0:a:h
+
+# Launch the devcli shell for this project
+cd $scriptdir
+name=mg-shell
+docker container rm -f $name &> /dev/null || echo 'No previous container to remove'
+docker run --init -it --rm \
+    --name $name \
+    --user $(whoami):$(whoami) \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $scriptdir/../root:/home/$(whoami)-env1:cached \
+    -v $scriptdir/..:/project:cached \
+    devcli

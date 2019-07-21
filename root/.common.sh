@@ -33,7 +33,9 @@ alias fr1="find . -maxdepth 1 -type d -printf '\n%p: ' -exec ls -lAFh "{}" \;"
 # login to aws ecr
 alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'
 # pretty directory listing
-alias l="k -h"
+alias l="k -h -a"
+# pretty print of less output
+alias less='less.sh'
 
 # neovim aliases
 alias vi='nvim'
