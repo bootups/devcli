@@ -22,13 +22,13 @@ function catfiles() {
 # Finds files across the file system >= 100M
 alias lf="sudo find . -xdev -type f -size +100M"
 
-# Start up different Chrome instances
-alias vdc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/Users/adrian/Projects/doco/visual-doco/config/chrome'
-
-alias un='for i in *.zip; do unzip "$i" -d "${i%%.zip}"; done'
-
 # Prints the contents of the directories immediately below the current directory
 alias fr1="find . -maxdepth 1 -type d -printf '\n%p: ' -exec ls -lAFh "{}" \;"
+
+# Start up different Chrome instances
+alias vdc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/projects/vd/prod/visual-doco/config/chrome --kiosk http://localhost:9000/drawio/src/main/webapp'
+
+alias un='for i in *.zip; do unzip "$i" -d "${i%%.zip}"; done'
 
 # login to aws ecr
 alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'

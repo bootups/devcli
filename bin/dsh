@@ -1,28 +1,14 @@
 #!/bin/zsh
 
-scriptdir=$0:a:h
-
 #Ubuntu is missing the following
 #      -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro \
 
-cd $scriptdir
-docker run --init -it -P --rm \
-    --user $(whoami):$(whoami) \
-    -v $(realpath ../root):/home/$(whoami)-env1:cached \
-    -v /Users/$(whoami):/home/$(whoami):cached \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    devcli
-
-criptdir=$0:a:h
+scriptdir=$0:a:h
 
 # Launch the devcli shell for this project
 cd $scriptdir
-name=mg-shell
-docker container rm -f $name &> /dev/null || echo 'No previous container to remove'
-docker run --init -it --rm \
-    --name $name \
-    --user $(whoami):$(whoami) \
+docker run --init -it --rm $1 $2 --user $(whoami):$(whoami) \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $scriptdir/../root:/home/$(whoami)-env1:cached \
-    -v $scriptdir/..:/project:cached \
+    -v /projects:/projects:cached \
     devcli

@@ -4,7 +4,7 @@ export TERM="xterm-256color"
 #chroot --userspec=adrianb:adrianb /host
 
 # Run docker terminal
-export PATH=$PATH:/Users/adrian/Projects/devcli/bin
+export PATH=$PATH:/projects/devcli/bin
 # MacOSX: access to some brew utilities
 export PATH=$PATH:/usr/local/bin
 # Access to neovim macros
@@ -19,3 +19,4 @@ source $HOME/.common.sh
 
 # zcomp files collect, the following clears them out
 rm ~/.zcompdump*
+cd /projects
