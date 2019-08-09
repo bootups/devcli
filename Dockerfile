@@ -67,7 +67,8 @@ RUN addgroup --gid 80 admin
 # todo: get rid of unnecessary gids
 RUN adduser --uid "$currentUid" --gid 0 --gid 1 --gid 80 --gid "$currentGid" --disabled-password  --gecos "" "$whoami"
 RUN echo ""$whoami":password"|sudo chpasswd
-RUN usermod -aG sudo "$whoami"
+RUN usermod -a -G sudo "$whoami"
+RUN usermod -a -G docker "$whoami"
 # Change default user location, so that the user can access their Users folder
 # with the same path as the host
 ARG home

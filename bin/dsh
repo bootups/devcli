@@ -10,7 +10,8 @@ cd $scriptdir
 if [[ ! -a ~/.zshrc ]]; then
     ln -s $(realpath ../root/.zshrc) ~/.zshrc
 fi
-docker run --init -it --rm $1 $2 --user $(whoami):$(whoami) \
+echo $1
+docker run --init -it --rm $1 --user $(whoami):$(whoami) \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(realpath ~):$(realpath ~):cached \
     -v /projects:/projects:cached \

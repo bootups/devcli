@@ -8,12 +8,13 @@ This Docker image enables me to run all my faviourite preconfigured tools on any
 * Scan through the Dockerfile to see various libraries used
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * Docker CLI support which executes against the host docker daemon
-* The following example shows
-  * Readable file sizes
-  * Colour coding of files depending on their executable bit
-  * Git support
 
-![alt text](images/example.png "Logo Title Text 1")
+| Feature        | Summary           | Screen Captures  |
+| ------------- |-------------| -----|
+| Readable shell      | <ul><li>Readable file sizes<li>Colour coding of files depending on their executable bit</li><li>Currently checked out branch in yellow, ```master``` shown below<li>Modified files shown with red + | ![alt text](images/example.png "Logo Title Text 1") |
+| tldr      | Easier to quickly process how a command works, rather than trawling through man      | ![alt text](images/tldr.png "Logo Title Text 1") |
+| z | Use ```z``` to easily navigate back to a previously visited directory      | ![alt text](images/z.png "Logo Title Text 1") |
+| completion | Use ```z``` to easily navigate back to a previously visited directory      | I have typed in sudo, and notice the text in grey following the prompt. This shows the last sudo command that I invoked. <br>![alt text](images/previous.png "Logo Title Text 1")<br>Use the right arrow key to fill the command out<br>![alt text](images/previous2.png "Logo Title Text 1") |
 
 # Usage
 ## Prerequisites
@@ -30,6 +31,10 @@ $ build.sh
 ```
 $ cd devcli/bin
 $ dsh
+```
+Run so that container port 9000 is bound to host port 80
+```
+dsh -p=80:9000
 ```
 # Customise
 * Add and remove tools to the Dockerfile
