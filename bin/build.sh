@@ -5,7 +5,7 @@ currentUid=$(id -u $(whoami))
 currentGid=$(id -g $(whoami))
 docker build -f "Dockerfile" --build-arg whoami=$(whoami) --build-arg dockerGid=$dockerGid --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
 
-cd root
+cd ~
 if [[ ! -a .oh-my-zsh ]]; then
     git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
 fi
@@ -20,10 +20,4 @@ if [[ ! -a .oh-my-zsh/custom/plugins/zsh-completions ]]; then
 fi
 if [[ ! -a .oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]]; then
     git clone --depth=1 git@github.com:zsh-users/zsh-syntax-highlighting.git .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-fi
-if [[ ! -a .ssh ]]; then
-    cp -r ~/.ssh .
-fi
-if [[ ! -a .aws ]]; then
-    cp -r ~/.aws .
 fi

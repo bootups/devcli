@@ -70,10 +70,10 @@ RUN echo ""$whoami":password"|sudo chpasswd
 RUN usermod -aG sudo "$whoami"
 # Change default user location, so that the user can access their Users folder
 # with the same path as the host
-RUN usermod -d /home/"$whoami"-env1 "$whoami"
-RUN sudo rm -rf /home/"$whoami"/
-RUN sudo mkdir /home/"$whoami"-env1
-RUN sudo chown "$whoami" /home/"$whoami"-env1
+#RUN usermod -d /home/"$whoami"-env1 "$whoami"
+#RUN sudo rm -rf /home/"$whoami"/
+#RUN sudo mkdir /home/"$whoami"-env1
+#RUN sudo chown "$whoami" /home/"$whoami"-env1
 
 USER "$whoami"
 

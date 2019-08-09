@@ -7,8 +7,11 @@ scriptdir=$0:a:h
 
 # Launch the devcli shell for this project
 cd $scriptdir
+if [[ ! -a ~/.zshrc ]]; then
+    ln -s $(realpath ../root/.zshrc) ~/.zshrc
+fi
 docker run --init -it --rm $1 $2 --user $(whoami):$(whoami) \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $scriptdir/../root:/home/$(whoami)-env1:cached \
+    -v /home/$(whoami):/home/$(whoami):cached \
     -v /projects:/projects:cached \
     devcli
