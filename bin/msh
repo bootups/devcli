@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+#Ubuntu is missing the following
+#      -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro \
+
+scriptdir=$0:a:h
+
+# Launch the devcli shell for this project
+cd $scriptdir
+if [[ ! -a ~/.zshrc ]]; then
+    ln -s $(realpath ../root/.zshrc) ~/.zshrc
+fi
+docker run --init -it --rm $1 $2 --user $(whoami):$(whoami) \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v $(realpath ~):$(realpath ~):cached \
+    -v /projects:/projects:cached \
+    devcli

@@ -16,11 +16,6 @@ This Docker image enables me to run all my faviourite preconfigured tools on any
 ### Prerequisite
 Install [Powerline](https://github.com/powerline/fonts) fonts
 
-### MacOS
-```
-brew install neovim
-```
-
 # Uses
 | Library                                 | Description | Screen Shots | Dependencies |
 | --------------------------------------- | ----------- | ------------ | ------------ |
