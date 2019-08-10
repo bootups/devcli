@@ -9,6 +9,7 @@ export PATH=$PATH:/projects/devcli/bin
 export PATH=$PATH:/usr/local/bin
 # Access to neovim macros
 export PATH=$PATH:/usr/share/nvim/runtime/macros
+export PATH=$PATH:~/bin
 # Ubuntu: to stop problems working with non root files from host
 export ZSH_DISABLE_COMPFIX=true
 
@@ -46,7 +47,7 @@ alias un='for i in *.zip; do unzip "$i" -d "${i%%.zip}"; done'
 # login to aws ecr
 alias a='$(aws ecr get-login --region us-east-1 --no-include-email)'
 # pretty directory listing
-alias l="k -h -a"
+alias l="k -h -a -r -t"
 
 # neovim aliases
 alias vi='nvim'

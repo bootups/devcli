@@ -14,7 +14,7 @@ This Docker image enables me to run all my faviourite preconfigured tools on any
 | Readable shell      | <ul><li>Readable file sizes<li>Colour coding of files depending on their executable bit</li><li>Currently checked out branch in yellow, ```master``` shown below<li>Modified files shown with red + | ![alt text](images/example.png "Logo Title Text 1") |
 | tldr      | Easier to quickly process how a command works, rather than trawling through man      | ![alt text](images/tldr.png "Logo Title Text 1") |
 | z | Use ```z``` to easily navigate back to a previously visited directory      | ![alt text](images/z.png "Logo Title Text 1") |
-| completion | Use ```z``` to easily navigate back to a previously visited directory      | I have typed in sudo, and notice the text in grey following the prompt. This shows the last sudo command that I invoked. <br>![alt text](images/previous.png "Logo Title Text 1")<br>Use the right arrow key to fill the command out<br>![alt text](images/previous2.png "Logo Title Text 1") |
+| completion | When typing a command in greyed text shows the previous executed command      | I have typed in sudo, and notice the text in grey following the prompt. This shows the last sudo command that I invoked. <br>![alt text](images/previous.png "Logo Title Text 1")<br>Use the right arrow key to fill the command out<br>![alt text](images/previous2.png "Logo Title Text 1") |
 
 # Usage
 ## Prerequisites
