@@ -25,12 +25,12 @@ Build the docker image
 ```
 $ git clone https://github.com/bootups/devcli.git
 $ cd devcli/bin
-$ build.sh
+$ ./build.sh
 ```
 ## Run
 ```
 $ cd devcli/bin
-$ dsh
+$ ./dsh
 ```
 Run so that container port 9000 is bound to host port 80
 ```

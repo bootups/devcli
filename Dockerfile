@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+
 # Install manpages
 RUN yes | unminimize && \
     apt-get install -y man-db && \
@@ -29,21 +31,29 @@ RUN apt-get update && apt-get install -y sudo \
   nodejs
 
 # Java packages
-RUN apt-get update && apt-get install -y sudo \
-  default-jdk \
-  ant
+#RUN apt-get update && apt-get install -y sudo \
+#  default-jdk \
+#  ant
 
 # Web
 RUN apt-get update && apt-get install -y sudo \
   grunt
 RUN npm install http-server -g
 
-# AWS
-RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-RUN unzip awscli-bundle.zip
-RUN sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-RUN rm awscli-bundle.zip
+RUN apt-get update && apt-get install -y sudo
+RUN apt-get install software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update
+RUN apt-get install -y python3.7
 
+# AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN sudo ./aws/install
+RUN rm awscliv2.zip
+
+# Setup locale so characters work correctly
+RUN apt-get update && apt-get -y install locales
 RUN locale-gen en_US.UTF-8
 
 # terminal colors with xterm
@@ -52,8 +62,8 @@ ENV ZSH_THEME agnoster
 ENV TERM=screen-256color
 
 # Install docker
-RUN curl -fsSL https://get.docker.com -o get-docker.sh
-RUN sudo sh get-docker.sh
+RUN apt-get update && apt-get install -y sudo \
+  docker.io
 
 # Gives good examples of linux commands
 RUN npm install -g tldr

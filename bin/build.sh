@@ -3,6 +3,8 @@
 cd ..
 currentUid=$(id -u $(whoami))
 currentGid=$(id -g $(whoami))
+# To perform a clean build if necessary
+#docker build -f "Dockerfile" --no-cache --build-arg home=$(realpath ~) --build-arg whoami=$(whoami) --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
 docker build -f "Dockerfile" --build-arg home=$(realpath ~) --build-arg whoami=$(whoami) --build-arg currentUid=$currentUid  --build-arg currentGid=$currentGid -t devcli:latest .
 
 cd ~
