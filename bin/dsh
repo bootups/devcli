@@ -14,5 +14,4 @@ echo $1
 docker run --init -it --rm $1 --user $(whoami):$(whoami) \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(realpath ~):$(realpath ~):cached \
-    -v /projects:/projects:cached \
     devcli
